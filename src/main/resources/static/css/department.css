@@ -1,4 +1,4 @@
-#dept-name-container {
+#dept-name-container, #dept-container {
     display: flex;
     justify-content: center;
     width: 80%;

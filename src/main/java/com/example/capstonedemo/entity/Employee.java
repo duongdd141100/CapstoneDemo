@@ -16,7 +16,7 @@ public class Employee {
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "dept_id" )
+    @JoinColumn(name = "dept_id")
     private Department department;
 
 }

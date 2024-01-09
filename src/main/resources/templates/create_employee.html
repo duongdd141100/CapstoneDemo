@@ -3,10 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="/css/core.css">
+    <link rel="stylesheet" href="/css/department.css">
     <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.0.min.js"></script>
 </head>
 <body>
-    <div id="header"/>
+    <div id="header"></div>
+    <div id="body">
+        <div id="dept-name-container">
+            <label for="emp-name-input">Name: </label>
+            <input id="emp-name-input" class="input-group" type="text" name="emp_name">
+        </div>
+        <div id="dept-container">
+            <label for="dept-name-input">Department: </label>
+            <select id="dept-id" class="select-group">
+                <option th:each="dept:${depts}" th:value="${dept.id}" th:text="${dept.name}">
+                </option>
+            </select>
+        </div>
+        <div id="submit-container">
+            <button onclick="onSubmit()">Submit</button>
+        </div>
+    </div>
 </body>
 </html>
 <script src="/js/core/include_header.js"></script>
+<script th:inline="javascript">
+    $(document).ready(() => {
+        let depts = /*[[${depts}]]*/;
+        if (depts == null || depts.length == 0) {
+            window.alert("You must create department before create employee!")
+            window.location.href = "/department/create"
+        }
+    });
+
+    async function onSubmit() {
+        let name = document.getElementById("emp-name-input").value;
+        let deptId = document.getElementById("dept-id").value;
+        if (name.trim() === '') {
+            window.alert("Name cannot be null!");
+            return;
+        }
+        const res = await fetch('/api/employee/create', {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({name, department: {id: deptId}})
+        })
+        const resJson = await res.json();
+        if (resJson != null) {
+            window.alert("Create successfully");
+            window.location.href = "/home"
+        }
+    }
+</script>
