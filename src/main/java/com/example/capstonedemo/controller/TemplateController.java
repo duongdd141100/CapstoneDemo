@@ -11,4 +11,19 @@ public class TemplateController {
     public String home() {
         return "home";
     }
+
+    @GetMapping("/department/create")
+    public String createDepartment() {
+        return "create_department";
+    }
+
+    @GetMapping("/employee/create")
+    public String createEmployee() {
+        return "create_employee";
+    }
+
+    @GetMapping("/header")
+    public String header() {
+        return "header";
+    }
 }
