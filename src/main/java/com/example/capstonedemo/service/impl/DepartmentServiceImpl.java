@@ -25,12 +25,12 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public Department update(Department object) {
+    public Department update(Integer id, Department object) {
         return null;
     }
 
     @Override
-    public Boolean delete(Department object) {
+    public Boolean delete(Integer id) {
         return null;
     }
 }

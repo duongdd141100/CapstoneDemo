@@ -6,6 +6,6 @@ public interface BaseService<T> {
 
     List<T> findAll();
     T create(T object);
-    T update(T object);
-    Boolean delete(T object);
+    T update(Integer id, T object);
+    Boolean delete(Integer id);
 }

@@ -16,7 +16,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public List<Employee> findAll() {
-        return null;
+        return employeeRepo.findAll();
     }
 
     @Override
@@ -25,12 +25,16 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Employee update(Employee object) {
-        return null;
+    public Employee update(Integer id, Employee object) {
+        Employee employee = employeeRepo.findById(id).get();
+        employee.setName(object.getName());
+        employee.getDepartment().setId(object.getDepartment().getId());
+        return employeeRepo.save(employee);
     }
 
     @Override
-    public Boolean delete(Employee object) {
-        return null;
+    public Boolean delete(Integer id) {
+        employeeRepo.deleteById(id);
+        return true;
     }
 }

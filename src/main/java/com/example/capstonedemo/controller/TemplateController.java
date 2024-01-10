@@ -15,7 +15,7 @@ public class TemplateController {
     @Autowired
     private DepartmentService departmentService;
 
-    @GetMapping("/home")
+    @GetMapping(value = {"", "/home"})
     public String home() {
         return "home";
     }
