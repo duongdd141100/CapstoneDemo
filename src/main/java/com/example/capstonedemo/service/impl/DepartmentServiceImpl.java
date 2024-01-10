@@ -26,11 +26,14 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     @Override
     public Department update(Integer id, Department object) {
-        return null;
+        Department department = departmentRepo.findById(id).get();
+        department.setName(object.getName());
+        return departmentRepo.save(department);
     }
 
     @Override
     public Boolean delete(Integer id) {
-        return null;
+        departmentRepo.deleteById(id);
+        return true;
     }
 }

@@ -42,7 +42,7 @@ public class EmployeeController {
         try {
             return ResponseEntity.ok(employeeService.update(id, employee));
         } catch (Exception e) {
-            log.error("Create employee: " + e);
+            log.error("Update employee: " + e);
             return ResponseEntity.badRequest().body(null);
         }
     }
@@ -52,7 +52,7 @@ public class EmployeeController {
         try {
             return ResponseEntity.ok(employeeService.delete(id));
         } catch (Exception e) {
-            log.error("Create employee: " + e);
+            log.error("Update employee: " + e);
             return ResponseEntity.badRequest().body(null);
         }
     }
